@@ -16,6 +16,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import copy
 
 DELAY_TIME = 0
+DELAY_TIME_MAX = 50
 TOTAL_THREAD = 0
 SERVER_URL = "http://192.168.1.120:8090"
 
@@ -33,8 +34,13 @@ def camProcess(data):
     imgInfo = cvImg.shape
     size = (imgInfo[1], imgInfo[0])
     showVideo("Main Camera", cvImg, 5)
-
-    if(DELAY_TIME >= 50):
+    
+    if(TOTAL_THREAD >=5):
+        DELAY_TIME_MAX = 100
+    else:
+        DELAY_TIME_MAX = 50
+    
+    if(DELAY_TIME >= DELAY_TIME_MAX):
         imgAnalyse = threading.Thread(target=analyseQRCode, args=(cvImg,))
         imgAnalyse.start()
         DELAY_TIME = 0
@@ -83,22 +89,24 @@ def analyseQRCode(img):
 
     scanResult = json.dumps(resList, ensure_ascii=False) 
 
-    try:
-        url = SERVER_URL + '/api/comm/scan'
-        data = scanResult
-        r = requests.post(url, json=data, timeout=3)
-    except:
-        rospy.loginfo("[ILibrary] Thread-" + str(currThread) + ' Sync scan result timeout')
+    rospy.loginfo("[ILibrary] Thread-" + str(currThread) + " Done" + "\n" + scanResult)
 
-    try:
-        url = SERVER_URL + '/api/comm/upload'
-        data = imgEncode(img)
-        r = requests.post(url, json=data, timeout=3)
-    except:
-        rospy.loginfo("[ILibrary] Thread-" + str(currThread) + " Image upload timeout")
+    if len(resList) > 0:
+        try:
+            url = SERVER_URL + '/api/comm/scan'
+            data = scanResult
+            r = requests.post(url, json=data, timeout=3)
+        except:
+            rospy.loginfo("[ILibrary] Thread-" + str(currThread) + ' Sync scan result timeout')
+
+        #try:
+        #    url = SERVER_URL + '/api/comm/upload'
+        #    data = imgEncode(img)
+        #    r = requests.post(url, json=data, timeout=3)
+        #except:
+        #    rospy.loginfo("[ILibrary] Thread-" + str(currThread) + " Image upload timeout")
 
     TOTAL_THREAD -= 1
-    rospy.loginfo("[ILibrary] Thread-" + str(currThread) + " Done" + "\n" + scanResult)
     return scanResult
 
 def init():
