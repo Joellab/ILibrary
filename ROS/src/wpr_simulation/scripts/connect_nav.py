@@ -26,26 +26,26 @@ def cmdQuery():
     global CURRENT_JOB
     prevJob = "NONE"
     while True:
-        #try:
-        url = SERVER_URL + '/api/comm/cmd'
-        r = requests.get(url, timeout=3)
-        r = r.json()
-    
-        cmdLock.acquire()
-        CMD = r.get("data")
-        cmdLock.release()
+        try:
+            url = SERVER_URL + '/api/comm/cmd'
+            r = requests.get(url, timeout=3)
+            r = r.json()
+        
+            cmdLock.acquire()
+            CMD = r.get("data")
+            cmdLock.release()
 
-        if CMD != prevJob:
-            if CMD.split("|")[0] == "NEWJOB":
-                CURRENT_JOB = CMD.split("|")[1]
-                ACTION = "NAVPOINT"
-            elif CMD.split("|")[0] == "STOP":
-                CURRENT_JOB = "INIT"
-                ACTION = "INIT"
-            prevJob = CMD
-            rospy.loginfo("[ILibrary] New command received: " + CMD)
-        #except:
-        #    rospy.loginfo("[ILibrary] Command query failed")
+            if CMD != prevJob:
+                if CMD.split("|")[0] == "NEWJOB":
+                    CURRENT_JOB = CMD.split("|")[1]
+                    ACTION = "NAVPOINT"
+                elif CMD.split("|")[0] == "STOP":
+                    CURRENT_JOB = "INIT"
+                    ACTION = "INIT"
+                prevJob = CMD
+                rospy.loginfo("[ILibrary] New command received: " + CMD)
+        except:
+            rospy.loginfo("[ILibrary] Command query failed")
         time.sleep(3)
 
 
@@ -53,33 +53,33 @@ def waitForJob():
     global ACTION
     global CURRENT_JOB
     while ACTION == "STANDBY":
-        #try:
-        url = SERVER_URL + '/api/comm/job'
-        params = {"current": CURRENT_JOB}
-        r = requests.get(url, params, timeout=3)
-        r = r.json()
-        if r.get("data").get("action") != "STANDBY":
-            ACTION = r.get("data").get("action")
-            actionProcess(r)
-        #except:
-        #    rospy.loginfo("[ILibrary] Job query failed 2")
+        try:
+            url = SERVER_URL + '/api/comm/job'
+            params = {"current": CURRENT_JOB}
+            r = requests.get(url, params, timeout=3)
+            r = r.json()
+            if r.get("data").get("action") != "STANDBY":
+                ACTION = r.get("data").get("action")
+                actionProcess(r)
+        except:
+            rospy.loginfo("[ILibrary] Job query failed 2")
         time.sleep(3)
 
 def getNextJob():
     global ACTION
     global CURRENT_JOB
-    #try:
-    url = SERVER_URL + '/api/comm/job'
-    params = {"current": CURRENT_JOB}
-    r = requests.get(url, params, timeout=3)
-    r = r.json()
-    ACTION = r.get("data").get("action")
-    CURRENT_JOB = r.get("data").get("uuid")
-    print(ACTION)
-    actionProcess(r)
+    try:
+        url = SERVER_URL + '/api/comm/job'
+        params = {"current": CURRENT_JOB}
+        r = requests.get(url, params, timeout=3)
+        r = r.json()
+        ACTION = r.get("data").get("action")
+        CURRENT_JOB = r.get("data").get("uuid")
+        print(ACTION)
+        actionProcess(r)
 
-    #except:
-    #    rospy.loginfo("[ILibrary] Job query failed 1")
+    except:
+        rospy.loginfo("[ILibrary] Job query failed 1")
 
 def navPoint(posiX, posiY, posiZ, oriX, oriY, oriZ, oriW):
     navGoal = MoveBaseGoal()
