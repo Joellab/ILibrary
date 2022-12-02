@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongmai.clonfer.mapper.CpBaseUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.hongmai.clonfer.model.domain.CpBaseUser">
+            <id property="uuid" column="uuid" jdbcType="VARCHAR"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="fullname" column="fullname" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="role" column="role" jdbcType="INTEGER"/>
+            <result property="orginazationUuid" column="orginazation_uuid" jdbcType="VARCHAR"/>
+            <result property="ability" column="ability" jdbcType="VARCHAR"/>
+            <result property="gmtReg" column="gmt_reg" jdbcType="VARCHAR"/>
+            <result property="ipReg" column="ip_reg" jdbcType="VARCHAR"/>
+            <result property="gmtLastLogin" column="gmt_last_login" jdbcType="VARCHAR"/>
+            <result property="ipLastLogin" column="ip_last_login" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid,username,password,
+        fullname,avatar,email,
+        role,orginazation_uuid,ability,
+        gmt_reg,ip_reg,gmt_last_login,
+        ip_last_login,status,ext_info
+    </sql>
+</mapper>

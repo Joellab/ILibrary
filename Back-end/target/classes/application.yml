@@ -1,0 +1,67 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.200:3306/library?characterEncoding=utf-8&useSSL=false&autoReconnect=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+    username: library
+    password: 12321Wjwwjw
+  redis:
+    host: 192.168.1.200
+    port: 6379
+    password: 87215765
+    max-wait: 30000
+    max-active: 1000
+    max-idle: 20
+    min-idle: 0
+    timeout: 3000
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:
+    host: smtpout.secureserver.net
+    username: contact@shiyirep.com
+    password: Shiyi2021
+    # 端口号465或587
+    port: 465
+    # 默认的邮件编码为UTF-8
+    default-encoding: UTF-8
+    # 配置SSL 加密工厂
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+          ssl:
+            enable: true
+        #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+        debug: false
+  application:
+    name: Clonfer
+    version: 0.0.1 SNAPSHOT
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+minio:
+  url: http://oss.base.joellab.com:9000 # 服务地址
+  access: clonfer # 账号
+  secret: ix31PDCfTc]2,KBAN5M # 密码
+  bucket: clonfer # Bucket
+
+security:
+  jwt:
+    secretKey: whatever
+
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: ${spring.application.version}
+  application-description: Clonfer云展会API接口文档
+  try-host: http://localhost:${server.port}
+

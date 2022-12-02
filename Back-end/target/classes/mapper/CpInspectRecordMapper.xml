@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongmai.clonfer.mapper.CpInspectRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.hongmai.clonfer.model.domain.CpInspectRecord">
+            <id property="uuid" column="uuid" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="subTitle" column="sub_title" jdbcType="VARCHAR"/>
+            <result property="organization" column="organization" jdbcType="VARCHAR"/>
+            <result property="guarantor" column="guarantor" jdbcType="VARCHAR"/>
+            <result property="location" column="location" jdbcType="VARCHAR"/>
+            <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="version" column="version" jdbcType="INTEGER"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="operator" column="operator" jdbcType="VARCHAR"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+            <result property="extSetting" column="ext_setting" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid,title,sub_title,
+        organization,guarantor,location,
+        start_time,end_time,status,
+        version,creator,operator,
+        gmt_create,gmt_modified,ext_setting
+    </sql>
+</mapper>

@@ -1,0 +1,8 @@
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('11fbf6b5-d6b9-4ecc-8814-9633a26de616', 'Women\'s Murder Club By James Patterson', 'literature', 'NORMAL', '1669944029979', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('1f99a735-c1a2-4309-9709-bb506db8c909', 'Java Programming Tutorial', 'computer science', 'NORMAL', '1669925901074', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('68f7dd34-f7dd-4f71-ab3d-0a684b2b9ac0', 'Women\'s Murder Club By James Patterson', 'literature', 'NORMAL', '1669924252466', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('6a63a631-2dca-4fc9-8418-41cdc1914c39', 'When I Hit You', 'literature', 'NORMAL', '1669770897322', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('6be2de83-c7e8-4d15-bc81-b449200deadc', 'Women\'s Murder Club By James Patterson', 'literature', 'NORMAL', '1669924250022', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('9b9c82bf-eba9-45da-9310-8b0232f49150', 'When I Hit You', 'literature', 'NORMAL', '1669944024808', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('adb962f9-7ce9-425f-b8cc-9a6f277658e7', 'When I Hit You', 'literature', 'NORMAL', '1669944029992', NULL);
+INSERT INTO `lib_book_record` (`uuid`, `name`, `category`, `status`, `last_scan`, `ext_info`) VALUES ('d43a721f-d44a-4884-9ca8-96a9ae87909c', 'White Christmas', 'literature', 'NORMAL', '1669924252477', NULL);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongmai.clonfer.mapper.CpBaseOrginazationMapper">
+
+    <resultMap id="BaseResultMap" type="com.hongmai.clonfer.model.domain.CpBaseOrginazation">
+            <id property="uuid" column="uuid" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="category" column="category" jdbcType="VARCHAR"/>
+            <result property="owner" column="owner" jdbcType="VARCHAR"/>
+            <result property="member" column="member" jdbcType="VARCHAR"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+            <result property="plan" column="plan" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid,name,category,
+        owner,member,gmt_create,
+        plan,status,ext_info
+    </sql>
+</mapper>

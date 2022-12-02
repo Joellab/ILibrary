@@ -1,0 +1,1 @@
+INSERT INTO `cp_base_orginazation` (`uuid`, `name`, `category`, `owner`, `member`, `gmt_create`, `plan`, `status`, `ext_info`) VALUES ('31c0676f-387c-4c8e-8f0c-7924ecd61aak', 'University of Birmingham', 'Education', '290d5d2f-15d0-49f8-91e0-462319fbf5be', NULL, '2021-09-08 21:09:43', 'FREE', 'NORMAL', NULL);
